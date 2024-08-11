@@ -15,17 +15,26 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav justify-content-center">
-                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item submenu dropdown">
+                            <li class="nav-item @yield('index-active')"><a class="nav-link"
+                                    href="{{ route('theme.index') }}">Home</a>
+                            </li>
+                            <li class="nav-item @yield('category-active') submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-haspopup="true" aria-expanded="false">Categories</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog-details.html">Food</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="blog-details.html">Bussiness</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="blog-details.html">Travel</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ route('theme.category') }}">Food</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ route('theme.category') }}">Bussiness</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ route('theme.category') }}">Travel</a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item @yield('contact-active')"><a class="nav-link"
+                                    href="{{ route('theme.contact') }}">Contact</a>
+                            </li>
                         </ul>
 
                         <!-- Add new blog -->
@@ -34,13 +43,6 @@
 
                         <ul class="nav navbar-nav navbar-right navbar-social">
                             <a href="#" class="btn btn-sm btn-warning">Register / Login</a>
-                            <!-- <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Welcome User</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog-details.html">My Blogs</a></li>
-                </ul>
-              </li> -->
                         </ul>
                     </div>
                 </div>
