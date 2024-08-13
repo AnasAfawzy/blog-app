@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
+use App\Models\Subscriber;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,16 +19,16 @@ use Illuminate\Support\Facades\Route;
 
 
 
+// Theme Route
 Route::controller(ThemeController::class)->name('theme.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/category', 'category')->name('category');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/singleblog', 'singleblog')->name('singleblog');
-    // Route::get('/login', 'login')->name('login');
-    // Route::get('/register', 'register')->name('register');
 });
 
-
+// subscriber store route
+Route::post('/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
 
 
 Route::get('/dashboard', function () {
