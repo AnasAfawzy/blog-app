@@ -29,6 +29,7 @@ Route::controller(ThemeController::class)->name('theme.')->group(function () {
 
 // subscriber store route
 Route::post('/subscriber/store', [SubscriberController::class, 'store'])->name('subscriber.store');
+Route::post('/subscriber/store', [SubscriberController::class, 'store2'])->name('subscriber.store2');
 
 
 Route::get('/dashboard', function () {

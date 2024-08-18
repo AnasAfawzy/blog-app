@@ -2,13 +2,22 @@
                         <div class="widget-wrap">
                             <div class="single-sidebar-widget newsletter-widget">
                                 <h4 class="single-sidebar-widget__title">Newsletter</h4>
-                                <form action="{{ route('subscriber.store') }}" method="POST">
+                                @if (session('status'))
+                                    <div class="alert alert-success">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                                <form action="{{ route('subscriber.store2') }}" method="POST">
                                     @csrf
                                     <div class="form-group mt-30">
                                         <div class="col-autos">
-                                            <input type="text" class="form-control" id="inlineFormInputGroup"
-                                                placeholder="Enter email" onfocus="this.placeholder = ''"
+                                            <input type="text" name="email" value="{{ old('email') }}"
+                                                class="form-control" id="inlineFormInputGroup" placeholder="Enter email"
+                                                onfocus="this.placeholder = ''"
                                                 onblur="this.placeholder = 'Enter email'">
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <button class="bbtns d-block mt-20 w-100">Subcribe</button>
