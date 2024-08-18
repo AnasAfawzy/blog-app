@@ -16,7 +16,7 @@
                         <h6>Newsletter</h6>
                         <p>Stay update with our latest</p>
                         <div>
-                            @if (session('status'))
+                            @if (session('status2'))
                                 <div class="alert alert-success">
                                     {{ session('status2') }}
                                 </div>
@@ -24,13 +24,13 @@
                             <form action="{{ route('subscriber.store2') }}" method="post" class="form-inline">
                                 @csrf
                                 <div class="d-flex flex-row">
-                                    <input class="form-control" name="email2" placeholder="Enter Email"
+                                    <input class="form-control" name="email" placeholder="Enter Email"
                                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
                                         required="" type="email">
                                     <button class="click-btn btn btn-default"><span
                                             class="lnr lnr-arrow-right"></span></button>
                                 </div>
-                                @error('email2')
+                                @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </form>
