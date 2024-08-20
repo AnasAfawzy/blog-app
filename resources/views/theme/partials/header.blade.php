@@ -39,10 +39,11 @@
                                 href="{{ route('theme.contact') }}">Contact</a>
                         </li>
                     </ul>
-
-                    <!-- Add new blog -->
-                    <a href="#" class="btn btn-sm btn-primary mr-2">Add New</a>
-                    <!-- End - Add new blog -->
+                    @if (Auth::check())
+                        <!-- Add new blog -->
+                        <a href="{{ route('blogs.create') }}" class="btn btn-sm btn-primary mr-2">Add New</a>
+                        <!-- End - Add new blog -->
+                    @endif
 
                     <ul class="nav navbar-nav navbar-right navbar-social">
                         @if (!Auth::check())
@@ -54,10 +55,11 @@
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="blog-details.html">My Blogs</a>
                                     </li>
-                                    <form action="{{ route('logout') }}" method="post">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="post">
                                         @csrf
                                         <li class="nav-item">
-                                            <a class="nav-link" href="javascript:$('form').submit();">LogOut</a>
+                                            <a class="nav-link"
+                                                href="javascript:document.getElementById('logout-form').submit();">LogOut</a>
                                         </li>
                                     </form>
                                 </ul>
