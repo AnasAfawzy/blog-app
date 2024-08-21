@@ -28,7 +28,8 @@
                                 <ul class="dropdown-menu">
                                     @foreach ($catgory as $cat)
                                         <li class="nav-item"><a class="nav-link"
-                                                href="{{ route('theme.category') }}">{{ $cat->name }}</a></li>
+                                                href="{{ route('theme.category', ['id' => $cat->id]) }}">{{ $cat->name }}</a>
+                                        </li>
                                     @endforeach
 
                                 </ul>
