@@ -12,9 +12,10 @@ class ThemeController extends Controller
         $blogs = Blog::paginate(4);
         return view('theme.index', compact('blogs'));
     }
-    public function category()
+    public function category($id)
     {
-        return view('theme.category');
+        $blogs = Blog::where('category_id', $id)->paginate(4);
+        return view('theme.category', compact('blogs'));
     }
     public function contact()
     {
