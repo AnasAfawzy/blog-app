@@ -40,8 +40,14 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         $data = $request->validated();
+        $tempimage = $request->image;
+        $image = time() . '_' . $tempimage->getClientOriginalName();
+        $tempimage->storeAs('blogs', $image, 'public');
+        $data['image'] = $image;
+        $data['user_id'] = Auth::user()->id;
+        Blog::create($data);
+        return back()->with('blog_status', 'New Blog Added');
     }
-
     /**
      * Display the specified resource.
      */

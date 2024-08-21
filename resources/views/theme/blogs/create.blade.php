@@ -17,6 +17,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    @if (session('blog_status'))
+                        <div class="alert alert-success">
+                            {{ session('blog_status') }}
+                        </div>
+                    @endif
                     <form enctype="multipart/form-data" action="{{ route('blogs.store') }}" class="form-contact contact_form"
                         method="post">
                         @csrf
