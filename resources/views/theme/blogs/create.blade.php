@@ -1,5 +1,5 @@
 @extends('theme.master')
-@section('title', 'Register')
+@section('title', 'Add New Blog')
 @section('content')
     <!--================ Hero sm banner start =================-->
     <section class="mb-5px">
