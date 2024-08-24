@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -62,15 +64,26 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         $categories = Category::all();
+
         return view('theme.blogs.edit', compact('categories', 'blog'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        $data = $request->validated();
+        if ($request->hasFile('image')) {
+            Storage::delete("public/blogs/$blog->image");
+            $tempimage = $request->image;
+            $image = time() . '_' . $tempimage->getClientOriginalName();
+            $tempimage->storeAs('blogs', $image, 'public');
+            $data['image'] = $image;
+        }
+
+        $blog->update($data);
+        return back()->with('update_blog_status', 'Blog Updated');
     }
 
     /**
