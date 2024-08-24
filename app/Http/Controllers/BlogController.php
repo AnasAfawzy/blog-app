@@ -63,9 +63,11 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        $categories = Category::all();
-
-        return view('theme.blogs.edit', compact('categories', 'blog'));
+        if ($blog->user_id == Auth::user()->id) {
+            $categories = Category::all();
+            return view('theme.blogs.edit', compact('categories', 'blog'));
+        }
+        abort(403);
     }
 
     /**
@@ -73,17 +75,20 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        $data = $request->validated();
-        if ($request->hasFile('image')) {
-            Storage::delete("public/blogs/$blog->image");
-            $tempimage = $request->image;
-            $image = time() . '_' . $tempimage->getClientOriginalName();
-            $tempimage->storeAs('blogs', $image, 'public');
-            $data['image'] = $image;
-        }
+        if ($blog->user_id == Auth::user()->id) {
+            $data = $request->validated();
+            if ($request->hasFile('image')) {
+                Storage::delete("public/blogs/$blog->image");
+                $tempimage = $request->image;
+                $image = time() . '_' . $tempimage->getClientOriginalName();
+                $tempimage->storeAs('blogs', $image, 'public');
+                $data['image'] = $image;
+            }
 
-        $blog->update($data);
-        return back()->with('update_blog_status', 'Blog Updated');
+            $blog->update($data);
+            return back()->with('update_blog_status', 'Blog Updated');
+        }
+        abort(403);
     }
 
     /**
@@ -91,7 +96,11 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        if ($blog->user_id == Auth::user()->id) {
+            Storage::delete("public/blogs/$blog->image");
+            $blog->delete();
+            return back()->with('delete_blog_status', 'Blog Deleted');
+        }
     }
 
     /**

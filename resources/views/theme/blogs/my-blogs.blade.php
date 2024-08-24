@@ -17,6 +17,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
+                    @if (session('delete_blog_status'))
+                        <div class="alert alert-danger">
+                            {{ session('delete_blog_status') }}
+                        </div>
+                    @endif
                     @if (count($blogs) > 0)
                         <table class="table">
                             <thead>
@@ -36,8 +41,14 @@
                                             <a href="{{ route('blogs.edit', ['blog' => $blog]) }}"
                                                 class="btn btn-sm btn-primary mr-2">Edit
                                             </a>
-                                            <a href="{{ route('blogs.create') }}" class="btn btn-sm btn-danger mr-2">delete
-                                            </a>
+                                            <form id="delete_form" action="{{ route('blogs.destroy', ['blog' => $blog]) }}"
+                                                method="post" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <a href="javascript:document.getElementById('delete_form').submit();"
+                                                    class="btn btn-sm btn-danger mr-2">delete
+                                                </a>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
