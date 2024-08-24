@@ -12,7 +12,7 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('create');
+        $this->middleware('auth')->only('create', 'myBlogs');
     }
     /**
      * Display a listing of the resource.
@@ -61,7 +61,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $categories = Category::all();
+        return view('theme.blogs.edit', compact('categories', 'blog'));
     }
 
     /**
@@ -78,5 +79,14 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+    }
+
+    /**
+     * Display all user blogs.
+     */
+    public function myBlogs(Blog $blog)
+    {
+        $blogs = Blog::where('user_id', Auth::user()->id)->paginate(3);
+        return view('theme.blogs.my-blogs', compact('blogs'));
     }
 }
