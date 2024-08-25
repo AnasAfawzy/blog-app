@@ -32,55 +32,58 @@
                     </div>
 
                     <div class="comments-area">
-                        <h4>05 Comments</h4>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets') }}/img/avatar.png" width="50px">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Emilly Blunt</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            Never say goodbye till the end comes!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets') }}/img/avatar.png" width="50px">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Maria Luna</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            Never say goodbye till the end comes!
-                                        </p>
+                        @if (count($blog->comments) > 0)
+                            <h4>{{ count($blog->comments) }} Comments</h4>
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="{{ asset('assets') }}/img/avatar.png" width="50px">
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a href="#">Emilly Blunt</a></h5>
+                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <p class="comment">
+                                                Never say goodbye till the end comes!
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets') }}/img/avatar.png" width="50px">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Ina Hayes</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            Never say goodbye till the end comes!
-                                        </p>
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="{{ asset('assets') }}/img/avatar.png" width="50px">
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a href="#">Maria Luna</a></h5>
+                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <p class="comment">
+                                                Never say goodbye till the end comes!
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="{{ asset('assets') }}/img/avatar.png" width="50px">
+                                        </div>
+                                        <div class="desc">
+                                            <h5><a href="#">Ina Hayes</a></h5>
+                                            <p class="date">December 4, 2017 at 3:12 pm </p>
+                                            <p class="comment">
+                                                Never say goodbye till the end comes!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                     </div>
 
                     <div class="comment-form">
