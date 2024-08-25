@@ -34,7 +34,7 @@
                             <a href="{{ route('theme.category', ['id' => $cat->id]) }}"
                                 class="d-flex justify-content-between">
                                 <p>{{ $cat->name }}</p>
-                                <p>(03)</p>
+                                <p>{{ count($cat->blogs) }}</p>
                             </a>
                         </li>
                     @endforeach
