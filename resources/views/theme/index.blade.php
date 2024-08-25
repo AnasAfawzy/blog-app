@@ -15,7 +15,6 @@
                 </div>
             </div>
         </section>
-
         <!--================Hero Banner end =================-->
         <section>
             <div class="container">
@@ -35,7 +34,6 @@
                             </div>
                         @endforeach
                     @endif
-
                 </div>
             </div>
         </section>
